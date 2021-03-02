@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src *;
+    img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' *;
+    style-src  'self' 'unsafe-inline' *">
+  <title>WoW MDX Viewer</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-treeview.min.css">
+</head>
+
+<body>
+  <div class="bs-canvas-overlay bs-canvas-anim bg-dark position-fixed w-100 h-100"></div>
+
+  <div class="container-fluid p-0">
+    <div class="bs-offset-main bs-canvas-anim position-absolute">
+      <button class="btn btn-danger" type="button" data-toggle="canvas" data-target="#bs-canvas-left"
+        aria-expanded="false" aria-controls="bs-canvas-left">&#9776;</button>
+    </div>
+
+    <div id="bs-canvas-left" class="bs-canvas bs-canvas-anim bs-canvas-left position-fixed bg-light h-100">
+      <header class="bs-canvas-header p-3 bg-dark">
+        <h5 class="d-inline-block text-light mb-0">Options</h5>
+        <button type="button" class="bs-canvas-close close" aria-label="Close">
+          <span aria-hidden="true" class="text-light">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+      </header>
+      <div class="bs-canvas-content p-2">
+        <div class="form-group">
+          <div class="input-group input-group-sm mb-3 mw-25">
+            <input type="text" id="directory-label" class="form-control disabled" readonly>
+            <div class="input-group-append">
+              <button id="directory" class="btn btn-secondary btn-sm d-block">
+                Select Client
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="tree" class="form-group mt-2">
+          <label>No client selected.</label>
+        </div>
+      </div>
+    </div>
+
+    <div id="bs-canvas-right" class="bs-canvas-right position-fixed bg-light">
+      <header class="bs-canvas-header p-2 bg-dark">
+        <h6 class="d-inline-block text-light mb-0">Character Styles</h5>
+          <button id="charcontrols-btn" type="button button-sm" class="bs-canvas-close close" aria-label="Close">
+            <span aria-hidden="true" class="text-light">
+              <i class="fas fa-minus"></i>
+            </span>
+          </button>
+      </header>
+
+      <div id="charcontrols" class="bs-canvas-content">
+        <div class="form-group p-2 mb-0">
+          <div class="form-group row mb-1">
+            <label for="skincolor" class="col-6 col-form-label-sm">Skin Colour</label>
+            <div class="col-5">
+              <input class="form-control form-control-sm" type="number" min="0" max="0" value="0" id="skincolor">
+            </div>
+          </div>
+          <div class="form-group row mb-1">
+            <label for="facetype" class="col-6 col-form-label-sm">Face Type</label>
+            <div class="col-5">
+              <input class="form-control form-control-sm" type="number" min="0" max="0" value="0" id="facetype">
+            </div>
+          </div>
+          <div class="form-group row mb-1">
+            <label for="haircolor" class="col-6 col-form-label-sm">Hair Colour</label>
+            <div class="col-5">
+              <input class="form-control form-control-sm" type="number" min="0" max="0" value="0" id="haircolor">
+            </div>
+          </div>
+          <div class="form-group row mb-1">
+            <label for="hairtype" class="col-6 col-form-label-sm">Hair Type</label>
+            <div class="col-5">
+              <input class="form-control form-control-sm" type="number" min="0" max="0" value="0" id="hairtype">
+            </div>
+          </div>
+          <div class="form-group row mb-1">
+            <label for="facialhairtype" class="col-6 col-form-label-sm">Facial Feature</label>
+            <div class="col-5">
+              <input class="form-control form-control-sm" type="number" min="0" max="0" value="0" id="facialhairtype">
+            </div>
+          </div>
+          <div class="form-group row mb-0">
+            <label for="facialhaircolor" class="col-6 col-form-label-sm">Facial Colour</label>
+            <div class="col-5">
+              <input class="form-control form-control-sm" type="number" min="0" max="0" value="0" id="facialhaircolor">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inner">
+      <canvas id="canvas" width="300" height="300" oncontextmenu="return false;"></canvas>
+    </div>
+
+    <div id="controls" class="controls form-inline bg-light">
+      <label for="sequence">Animation</label>
+      <select class="custom-select mr-2" id="sequence">
+        <option>None</option>
+      </select>
+
+      <label for="variation">Variation</label>
+      <select class="custom-select mr-2" id="variation">
+        <option>Skin 1</option>
+      </select>
+
+      <label for="targetZ">Camera Height</label>
+      <input type="range" class="custom-range mr-2" id="targetZ" value="2" min="-20" max="20" step="1">
+
+      <label for="distance">Camera Distance</label>
+      <input type="range" class="custom-range mr-2" id="distance" value="10" min="0" max="200" step="1">
+
+      <label for="particles">Particles</label>
+      <input type="checkbox" class="form-check-input mr-2" id="particles" checked>
+
+      <label for="ribbons">Ribbons</label>
+      <input type="checkbox" class="form-check-input" id="ribbons" checked>
+    </div>
+  </div>
+
+  <script src="assets/js/jquery-3.2.1.slim.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/fontawesome.all.min.js"></script>
+  <script src="assets/js/bootstrap-treeview.min.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+
+</html>

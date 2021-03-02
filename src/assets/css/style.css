@@ -1,0 +1,165 @@
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	font: 16px sans-serif;
+	touch-action: none;
+	background: #000;
+}
+
+::selection {
+	color: none;
+	background: none;
+}
+
+canvas {
+	display: block;
+	flex: 1 1 auto;
+}
+
+.controls {
+	padding: 5px 10px;
+	box-sizing: border-box;
+}
+
+label {
+	display: inline-block;
+	margin: 2px 5px;
+	white-space: nowrap;
+}
+
+input {
+	vertical-align: middle;
+}
+
+.container,
+.container-fluid {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.inner {
+	position: relative;
+	display: flex;
+	flex: 1 1 auto;
+	min-height: 0;
+}
+
+.bs-offset-main,
+.bs-offset-secondary {
+	top: 1em;
+	left: 1em;
+	position: absolute;
+	z-index: 999;
+}
+
+.bs-offset-secondary {
+	left: 4em;
+}
+
+.bs-canvas-overlay {
+	opacity: 0;
+	z-index: -1;
+}
+
+.bs-canvas-overlay.show {
+	opacity: 0.85;
+	z-index: 1100;
+}
+
+.bs-canvas {
+	top: 0;
+	width: 0;
+	z-index: 1110;
+	overflow-y: auto;
+}
+
+.bs-canvas-left {
+	left: 0;
+	z-index: 1200;
+}
+
+.bs-canvas-right {
+	right: 0;
+	bottom: 42px;
+	z-index: 1000;
+	width: 15em;
+}
+
+.bs-canvas-right .close {
+	font-size: 1em;
+	line-height: 1.5em;
+	outline: none;
+}
+
+.bs-canvas-anim {
+	transition: all .4s ease-out;
+	-webkit-transition: all .4s ease-out;
+	-moz-transition: all .4s ease-out;
+	-ms-transition: all .4s ease-out;
+}
+
+#tree .node {
+	padding: 0px
+}
+
+#tree .list-group-item {
+	margin: 0;
+	padding: 0 1em;
+	line-height: 2em;
+	color: #369;
+	position: relative;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+#tree .node-tree > a {
+	position: relative;
+}
+
+.icon-plus:before {
+	content: '\002B';
+}
+
+.icon-minus:before {
+	content: '\002D';
+}
+
+.icon-none:before {
+	display: none;
+}
+
+.controls>.custom-select,
+.controls>.custom-range {
+	max-height: 2rem;
+}
+
+.controls>.custom-select {
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+	width: 15%;
+}
+
+.controls>.custom-range {
+	width: 10%;
+}
+
+#charcontrols {
+	transition: max-height 1.5s ease-out;
+	max-height: 0;
+	overflow: hidden;
+}
+
+#charcontrols.open {
+	max-height: max-content;
+}
+
+.form-control:focus,
+.custom-select:focus {
+	box-shadow: none!important;
+	border-color: #88929a!important;
+}

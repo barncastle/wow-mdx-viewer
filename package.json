@@ -1,0 +1,35 @@
+{
+  "name": "wow-mdx-viewer",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "lint": "eslint -c .eslintrc --ext .ts ./src",
+    "copy": "copyfiles -u 1 \"./src/**/*.{html,css,png,js}\" ./dist && copyfiles package.json ./dist",
+    "build": "tsc && npm run copy",
+    "start": "npm run build && electron ./dist/main.js",
+    "build-dist": "npm run build && npm --prefix ./dist install ./dist --production",
+    "pack": "npm run build-dist && electron-packager ./dist --platform=win32 --arch=x64 --asar --overwrite --out ./bin"
+  },
+  "scriptNotes": {
+    "build": "Builds the app to the ./dist directory",
+    "start": "Runs the build script then launches electron",
+    "build-dist": "Builds the app in the ./dist directory and installs prod dependancies required by electron-packager",
+    "pack": "Runs the build-dist script then compiles a distributable windows electron app to ./bin"
+  },
+  "dependencies": {
+    "gl-matrix": "^3.3.0",
+    "implode-decoder": "^1.0.1",
+    "pako": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/pako": "^1.0.1",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "copyfiles": "^2.4.1",
+    "electron": "^9.4.0",
+    "electron-packager": "^15.2.0",
+    "eslint": "^7.3.1",
+    "rimraf": "^3.0.2",
+    "typescript": "3.9.5"
+  }
+}
