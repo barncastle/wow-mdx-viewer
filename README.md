@@ -1,4 +1,4 @@
-#WoW MDX Viewer
+# WoW MDX Viewer
 An Electron/TypeScript based model viewer for early World of Warcraft models that used the MDX format. See releases for x64 Windows binaries.
 
 - This viewer supports v1300, 1400 and 1500 MDX files which were used by clients prior to 0.11.0.3925.
@@ -22,7 +22,7 @@ Additional controls for character styles are located in a collapsed menu at the 
   - Currently this targets x64 Windows however can be modified for other [platforms](https://github.com/electron/electron-packager/blob/master/usage.txt).
 
 
-####Acknowledgements:
+#### Acknowledgements:
 
 - [war3-model](https://github.com/4eb0da/war3-model): A Warcraft 3 model viewer that was used as the basis for rendering.
 - [diablo2/mpq](https://github.com/blacha/diablo2/tree/master/packages/mpq): A MPQ reading library, that was forked, stripped back and zlib support added.
