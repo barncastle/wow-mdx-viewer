@@ -224,12 +224,12 @@ export class ModelReader {
 
     private parseGeosets(model: Model, reader: Reader, _size: number, $this: ModelReader) {
         if (model.Version === 1500)
-            $this.parseGeosetsNew(model, reader);
+            $this.parseGeosetsV1500(model, reader);
         else
-            $this.parseGeosetsOld(model, reader);
+            $this.parseGeosetsV1300(model, reader);
     }
 
-    private parseGeosetsOld(model: Model, reader: Reader) {
+    private parseGeosetsV1300(model: Model, reader: Reader) {
         const count = reader.int32();
 
         for (let i = 0; i < count; i++) {
@@ -312,7 +312,7 @@ export class ModelReader {
         }
     }
 
-    private parseGeosetsNew(model: Model, reader: Reader) {
+    private parseGeosetsV1500(model: Model, reader: Reader) {
         const count = reader.int32();
 
         for (let i = 0; i < count; i++) {
