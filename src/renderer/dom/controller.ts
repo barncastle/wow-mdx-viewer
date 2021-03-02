@@ -128,12 +128,12 @@ export class Controller {
     }
 
     private updateCameraDistance(value: number): void {
-        this.cameraDistance = Math.max(0, Math.min(value, 200));
+        this.cameraDistance = Math.max(0, Math.min(value, 1000));
         (<HTMLInputElement>document.getElementById('distance')).value = this.cameraDistance.toString();
     }
 
     private updateCameraZ(value: number): void {
-        this.cameraTargetZ = Math.max(-20, Math.min(value, 20));
+        this.cameraTargetZ = Math.max(-50, Math.min(value, 100));
         (document.getElementById('targetZ') as HTMLInputElement).value = this.cameraTargetZ.toString();
     }
 
