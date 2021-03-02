@@ -99,7 +99,7 @@ export function blitImages(...imgs: ImageData[]): ImageData {
             src[i + 0] = ((src[i + 3] * (src[i + 0] - imgs[p][i + 0]) - imgs[p][i + 0] + 255) >> 8) + imgs[p][i + 0];
             src[i + 1] = ((src[i + 3] * (src[i + 1] - imgs[p][i + 1]) - imgs[p][i + 1] + 255) >> 8) + imgs[p][i + 1];
             src[i + 2] = ((src[i + 3] * (src[i + 2] - imgs[p][i + 2]) - imgs[p][i + 2] + 255) >> 8) + imgs[p][i + 2];
-            src[i + 0] = (src[i + 3] + imgs[p][i + 3]) & 0xFF;
+            src[i + 3] = (src[i + 3] + imgs[p][i + 3]) & 0xFF;
         }
     }
 

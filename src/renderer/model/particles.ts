@@ -504,11 +504,9 @@ export class ParticlesController {
         const variation: number = this.interp.animVectorVal(particle.emitter.props.Variation);
         const latitude: number = this.interp.animVectorVal(particle.emitter.props.Latitude);
         const longitude: number = this.interp.animVectorVal(particle.emitter.props.Longitude);
-        const seed = uniform();
 
-        // CPlaneParticleEmitter::CreateParticle        
-
-        const vary = seed * variation + 1;
+        // CPlaneParticleEmitter::CreateParticle
+        const vary = uniform() * variation + 1;
         const velocity = speedScale * vary;
         vec3.set(particle.speed, 0, 0, velocity);
 
@@ -516,8 +514,8 @@ export class ParticlesController {
         particle.pos[1] += rand(-width, width);
 
         if (zsource < 1e-6) {
-            const polar = latitude * seed;
-            const azimuth = longitude * seed;
+            const polar = latitude * uniform();
+            const azimuth = longitude * uniform();
             const sinPolar = Math.sin(polar);
 
             vec3.set(particle.speed,
