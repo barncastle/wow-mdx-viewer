@@ -7,7 +7,7 @@ An Electron/TypeScript based model viewer for early World of Warcraft models tha
 - Bright pink textures are missing textures, this is the colour the above clients use.
 - Lighting and render priority are not supported.
 
-####Usage:
+#### Usage:
 
 Run the application, select the red burger menu icon at the top left and select your target WoW directory. This will populate a tree view with all available models. Clicking the close button or the main screen will collapse this menu.
 
